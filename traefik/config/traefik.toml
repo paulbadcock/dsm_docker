@@ -1,0 +1,6 @@
+debug = false                                                                                                                       
+logLevel = "INFO"                                                                                                                   
+defaultEntryPoints = [ "http", "https"]                                                                                             
+                                                                                                                                    
+[web]                                                                                                                               
+address = ":8080"
