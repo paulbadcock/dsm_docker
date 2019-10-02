@@ -1,0 +1,22 @@
+---                                                                                                                                 
+version: "2"                                                                                                                        
+services:                                                                                                                           
+  plex:                                                                                                                             
+    image: "linuxserver/plex"                                                                                                       
+    container_name: plex                                                                                                            
+    network_mode: host                                                                                                              
+    mem_limit: 2048m                                                                                                                
+    environment:                                                                                                                    
+      - PUID=1028                                                                                                                   
+      - PGID=100                                                                                                                    
+      - TZ=America/Halifax                                                                                                          
+      - VERSION=docker                                                                                                              
+    volumes:                                                                                                                        
+      - /volume1/docker/plex/config:/config                                                                                         
+      - /volume1/docker/plex/transcode:/transcode                                                                                   
+      - /volume1/data1:/data/tvshows                                                                                                   
+      - /volume1/data2:/data/movies                                                                                                
+      - /volume1/data3:/data/music                                                                                                  
+    devices:                                                                                                                        
+      - /dev/dri:/dev/dri                                                                                                           
+    restart: unless-stopped
