@@ -1,0 +1,18 @@
+---                                                                                                                                 
+version: "2"                                                                                                                        
+services:                                                                                                                           
+  traefik:                                                                                                                          
+    image: "traefik:maroilles-alpine"                                                                                               
+    container_name: traefik                                                                                                         
+    network_mode: bridge                                                                                                            
+    mem_limit: 512m                                                                                                                 
+    ports:                                                                                                                          
+      - 9091:80                                                                                                                     
+      - 9092:443                                                                                                                    
+      - 9090:8080                                                                                                                   
+    environment:                                                                                                                    
+      - TZ=America/Halifax                                                                                                          
+    volumes:                                                                                                                        
+      - /volume1/docker/traefik/config:/etc/traefik                                                                                 
+      - /var/run/docker.sock:/var/run/docker.sock                                                                                   
+    restart: unless-stopped
