@@ -1,0 +1,14 @@
+---                                                                                                                                 
+version: '3'                                                                                                                        
+services:                                                                                                                           
+  watchtower:                                                                                                                       
+    image: v2tec/watchtower:latest                                                                                                  
+    container_name: watchtower                                                                                                      
+    privileged: true                                                                                                                
+    environment:                                                                                                                    
+      - TZ='America/Halifax'                                                                                                        
+    volumes:                                                                                                                        
+      - /var/run/docker.sock:/var/run/docker.sock                                                                                   
+      # - /volume1/docker/watchtower/config/config.json:/config.json                                                                
+    command: --schedule "0 0 4 * * *" --cleanup                                                                                     
+    restart: unless-stopped
